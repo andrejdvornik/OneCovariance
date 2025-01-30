@@ -810,6 +810,11 @@ class CovBandPowers(CovTHETASpace):
                     csmf_BP_auto, csmf_BP_gg, csmf_BP_gm, csmf_BP_mmE, csmf_BP_mmB = \
                     self.covbandpowers_gaussian(obs_dict,
                                         survey_params_dict)
+                gauss = [gauss_CEgggg + gauss_CEgggg_sn, gauss_CEgggm, gauss_CEggmm, gauss_CBggmm,
+                     gauss_CEgmgm + gauss_CEgmgm_sn, gauss_CEmmgm, gauss_CBmmgm,
+                     gauss_CEEmmmm + gauss_CEEmmmm_sn, gauss_CEBmmmm,
+                     gauss_CBBmmmm + gauss_CBBmmmm_sn,
+                    csmf_BP_auto, csmf_BP_gg, csmf_BP_gm, csmf_BP_mmE, csmf_BP_mmB]
             else:
                 gauss_CEgggg, gauss_CEgggm, gauss_CEggmm, gauss_CBggmm, \
                     gauss_CEgmgm, gauss_CEmmgm, gauss_CBmmgm, \
@@ -818,7 +823,7 @@ class CovBandPowers(CovTHETASpace):
                     gauss_CEgggg_sn, gauss_CEgmgm_sn, gauss_CEEmmmm_sn, gauss_CBBmmmm_sn = \
                     self.covbandpowers_gaussian(obs_dict,
                                         survey_params_dict)
-            gauss = [gauss_CEgggg + gauss_CEgggg_sn, gauss_CEgggm, gauss_CEggmm, gauss_CBggmm,
+                gauss = [gauss_CEgggg + gauss_CEgggg_sn, gauss_CEgggm, gauss_CEggmm, gauss_CBggmm,
                      gauss_CEgmgm + gauss_CEgmgm_sn, gauss_CEmmgm, gauss_CBmmgm,
                      gauss_CEEmmmm + gauss_CEEmmmm_sn, gauss_CEBmmmm,
                      gauss_CBBmmmm + gauss_CBBmmmm_sn]

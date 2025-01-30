@@ -814,7 +814,7 @@ class CovBandPowers(CovTHETASpace):
                      gauss_CEgmgm + gauss_CEgmgm_sn, gauss_CEmmgm, gauss_CBmmgm,
                      gauss_CEEmmmm + gauss_CEEmmmm_sn, gauss_CEBmmmm,
                      gauss_CBBmmmm + gauss_CBBmmmm_sn,
-                    csmf_BP_auto, csmf_BP_gg, csmf_BP_gm, csmf_BP_mmE, csmf_BP_mmB]
+                     csmf_BP_auto, csmf_BP_gg, csmf_BP_gm, csmf_BP_mmE, csmf_BP_mmB]
             else:
                 gauss_CEgggg, gauss_CEgggm, gauss_CEggmm, gauss_CBggmm, \
                     gauss_CEgmgm, gauss_CEmmgm, gauss_CBmmgm, \

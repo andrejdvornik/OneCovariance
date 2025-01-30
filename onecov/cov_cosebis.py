@@ -866,13 +866,13 @@ class CovCOSEBI(CovELLSpace):
                     gauss_BBmmmm, \
                     gauss_EEgggg_sn, gauss_EEgmgm_sn, gauss_EEmmmm_sn, gauss_BBmmmm_sn, \
                     csmf_COSEBI_auto, csmf_COSEBI_gg, csmf_COSEBI_gm, csmf_COSEBI_mmE, csmf_COSEBI_mmB = \
-                    
                     self.covCOSEBI_gaussian(obs_dict,
                                             survey_params_dict)
                 gauss = [gauss_EEgggg + gauss_EEgggg_sn, gauss_EEgggm, gauss_EEggmm, gauss_EBggmm,
                         gauss_EEgmgm + gauss_EEgmgm_sn, gauss_EEmmgm, gauss_EBmmgm,
                         gauss_EEmmmm + gauss_EEmmmm_sn, gauss_EBmmmm,
-                        gauss_BBmmmm + gauss_BBmmmm_sn]
+                        gauss_BBmmmm + gauss_BBmmmm_sn,
+                        csmf_COSEBI_auto, csmf_COSEBI_gg, csmf_COSEBI_gm, csmf_COSEBI_mmE, csmf_COSEBI_mmB]
             else:
                 gauss_EEgggg, gauss_EEgggm, gauss_EEggmm, gauss_EBggmm, \
                     gauss_EEgmgm, gauss_EEmmgm, gauss_EBmmgm, \

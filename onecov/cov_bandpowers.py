@@ -219,7 +219,8 @@ class CovBandPowers(CovTHETASpace):
             limits_at_mode = np.array(self.ell_fourier_integral[argrelextrema(self.WXY_stack[mode, :], np.less)[0][:]])
             #limits_at_mode_append = np.zeros(len(limits_at_mode) + 2)
             limits_at_mode_append = np.zeros(len(limits_at_mode[(limits_at_mode >  self.ell_fourier_integral[1]) & (limits_at_mode < self.ell_fourier_integral[-2])]) + 2)
-            limits_at_mode_append[1:-1] = limits_at_mode
+            #limits_at_mode_append[1:-1] = limits_at_mode
+            limits_at_mode_append = limits_at_mode
             limits_at_mode_append[0] = self.ell_fourier_integral[0]
             limits_at_mode_append[-1] = self.ell_fourier_integral[-1]
             self.ell_limits.append(limits_at_mode_append)
@@ -1432,8 +1433,8 @@ class CovBandPowers(CovTHETASpace):
                 csmf_BP_flat = np.reshape(csmf_gg, (len(self.ellrange), flat_length))
                 for m_mode in range(len(self.ell_bins_clustering)):
                     local_ell_limit = self.ell_limits[m_mode][:]
-                    self.levin_int_fourier.init_integral(self.ellrange, csmf_BP_flat, True, True)
-                    csmf_BPgg[m_mode, :, :, :, :, :] = 1./self.N_ell_clustering[m_mode] * np.reshape(np.array(self.levin_int_fourier.cquad_integrate_single_well(local_ell_limit, m_mode)),original_shape)            
+                    self.levin_int.init_integral(self.ellrange, csmf_BP_flat, True, True)
+                    csmf_BPgg[m_mode, :, :, :, :, :] = 1./self.N_ell_clustering[m_mode] * np.reshape(np.array(self.levin_int.cquad_integrate_single_well(local_ell_limit, m_mode)),original_shape)
             else:
                 csmf_BPgg = 0
             if self.gm:
@@ -1443,8 +1444,8 @@ class CovBandPowers(CovTHETASpace):
                 csmf_BP_flat = np.reshape(csmf_gm, (len(self.ellrange), flat_length))
                 for m_mode in range(len(self.ell_bins_clustering)):
                     local_ell_limit = self.ell_limits[m_mode + len(self.ell_bins_clustering)][:]
-                    self.levin_int_fourier.init_integral(self.ellrange, csmf_BP_flat, True, True)
-                    csmf_BPgm[m_mode, :, :, :, :, :] = 1./self.N_ell_clustering[m_mode] * np.reshape(np.array(self.levin_int_fourier.cquad_integrate_single_well(local_ell_limit, m_mode + len(self.ell_bins_clustering))),original_shape)            
+                    self.levin_int.init_integral(self.ellrange, csmf_BP_flat, True, True)
+                    csmf_BPgm[m_mode, :, :, :, :, :] = 1./self.N_ell_clustering[m_mode] * np.reshape(np.array(self.levin_int.cquad_integrate_single_well(local_ell_limit, m_mode + len(self.ell_bins_clustering))),original_shape)
             else:
                 csmf_BPgm = 0
             
@@ -1456,9 +1457,9 @@ class CovBandPowers(CovTHETASpace):
                 csmf_BP_flat = np.reshape(csmf_mm, (len(self.ellrange), flat_length))
                 for m_mode in range(len(self.ell_bins_lensing)):
                     local_ell_limit_E = self.ell_limits[m_mode + 2*len(self.ell_bins_clustering)][:]
-                    self.levin_int_fourier.init_integral(self.ellrange, csmf_BP_flat, True, True)
-                    csmf_BPmmE[m_mode, :, :, :, :, :] = 1./2./self.N_ell_lensing[m_mode] * np.reshape(np.array(self.levin_int_fourier.cquad_integrate_single_well(local_ell_limit, m_mode + 2*len(self.ell_bins_clustering)),original_shape))           
-                    csmf_BPmmB[m_mode, :, :, :, :, :] = 1./2./self.N_ell_lensing[m_mode] * np.reshape(np.array(self.levin_int_fourier.cquad_integrate_single_well(local_ell_limit, m_mode + 2*len(self.ell_bins_clustering) +  len(self.ell_bins_lensing)),original_shape))       
+                    self.levin_int.init_integral(self.ellrange, csmf_BP_flat, True, True)
+                    csmf_BPmmE[m_mode, :, :, :, :, :] = 1./2./self.N_ell_lensing[m_mode] * np.reshape(np.array(self.levin.cquad_integrate_single_well(local_ell_limit, m_mode + 2*len(self.ell_bins_clustering)),original_shape))
+                    csmf_BPmmB[m_mode, :, :, :, :, :] = 1./2./self.N_ell_lensing[m_mode] * np.reshape(np.array(self.levin_int.cquad_integrate_single_well(local_ell_limit, m_mode + 2*len(self.ell_bins_clustering) +  len(self.ell_bins_lensing)),original_shape))
 
             else:
                 csmf_BPmmE, csmf_BPmmB = 0, 0

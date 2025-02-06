@@ -524,7 +524,7 @@ class Output():
         limit = max(-min(corr_covmatrix.flatten()), max(corr_covmatrix.flatten()))
         cbar = ax.imshow(corr_covmatrix, cmap = 'seismic', 
                          extent = [0, len(corr_covmatrix), 0, len(corr_covmatrix)],
-                         vmin=-limit, vmax=limit)
+                         vmin=-limit, vmax=limit, interpolation='nearest')
         fig.colorbar(cbar, location='bottom', shrink=.775, aspect=30, pad=0.055).ax.tick_params(axis='x', direction='in')
         ax.text(len(covmatrix)/2, -6*ratio, 'Correlation coefficients', fontsize=16, ha='center', va='center')
 
@@ -719,7 +719,7 @@ class Output():
         limit = max(-min(corr_covmatrix.flatten()), max(corr_covmatrix.flatten()))
         cbar = ax.imshow(corr_covmatrix, cmap = 'seismic', 
                          extent = [0, len(corr_covmatrix), 0, len(corr_covmatrix)],
-                         vmin=-limit, vmax=limit)
+                         vmin=-limit, vmax=limit, interpolation='nearest')
         fig.colorbar(cbar, location='bottom', shrink=.775, aspect=30, pad=0.055).ax.tick_params(axis='x', direction='in')
         ax.text(len(covmatrix)/2, -6*ratio, 'Correlation coefficients', fontsize=16, ha='center', va='center')
 

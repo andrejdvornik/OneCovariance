@@ -2238,7 +2238,7 @@ class CovELLSpace(PolySpectra):
         """
         csmf_gg_sva,csmf_gm_sva,csmf_mm_sva = self.covELL_csmf_cross_LSS_sva(covELLspacesettings)
         csmf_gg_ssc,csmf_gm_ssc,csmf_mm_ssc = self.covELL_csmf_cross_LSS_ssc(covELLspacesettings, survey_params_dict)
-        cov_csmf = self.covELL_csmf_SN() + self.covELL_csmf_SSC(survey_params_dict)
+        cov_csmf = self.covELL_csmf_SN(survey_params_dict) + self.covELL_csmf_SSC(survey_params_dict)
         return cov_csmf, csmf_gg_sva + csmf_gg_ssc, csmf_gm_sva + csmf_gm_ssc, csmf_mm_sva + csmf_mm_ssc
     
     def __bin_cov_ell_csmf(self,
@@ -5682,7 +5682,8 @@ class CovELLSpace(PolySpectra):
             SSCELLmmgm = 0
         return SSCELLgggg, SSCELLgggm, SSCELLggmm, SSCELLgmgm, SSCELLmmgm, SSCELLmmmm
 
-    def covELL_csmf_SN(self):
+    def covELL_csmf_SN(self,
+                       survey_params_dict):
         r"""
         Calculates the shot noise component of the stellar mass function covariance matrix
         
@@ -5694,8 +5695,7 @@ class CovELLSpace(PolySpectra):
         #amplitude = self.csmf_at_tomo_and_mass/self.deltaM_csmf[:, None]/self.Vmax
         amplitude = self.csmf_at_tomo_and_mass * \
                     (10**self.log10csmf_mass_bins[:, None]) * \
-                    (10**self.log10csmf_mass_bins[:, None]) * \
-                    np.log(10.0)*np.log(10.0) / \
+                    np.log(10.0) / \
                     (self.deltaM_csmf[:, None] * self.Vmax) # added ln(10)*deltaM factors
         return np.eye(len(self.log10csmf_mass_bins))[:,:, None, None]*np.eye(self.n_tomo_csmf)[None, None, :, :]*amplitude[:, None, :, None]
 

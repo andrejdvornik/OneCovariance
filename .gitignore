@@ -26,6 +26,7 @@ levin.egg-info
 /my_inputs/*
 /my_config/*
 /my_input/*
+/input/*/*/*.table
 
 
 test.ipynb

@@ -28,5 +28,4 @@ levin.egg-info
 /my_input/*
 /input/*/*/*.table
 
-
 test.ipynb
